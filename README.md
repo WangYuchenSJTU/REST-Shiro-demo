@@ -7,7 +7,7 @@ This Shiro demo shows how to realize remote authentication and authorization thr
 - /shiroweb consumes those security data through integrating Shiro and a custom realm 
 
 ## Shiroservlet
-The core of this project is to implement the function: `protected void doPost(HttpServletRequest request, HttpServletResponse response)` in file: `/shiroservlet/src/main/java/net/yuchen/shiroservlet/ShiroServlet.java`: [ShiroServlet.java](/shiroservlet/src/main/java/net/yuchen/shiroservlet/ShiroServlet.java)
+The core of this project is to implement the function: `protected void doPost(HttpServletRequest request, HttpServletResponse response)` in file: `/shiroservlet/src/main/java/net/yuchen/shiroservlet/`[ShiroServlet.java](/shiroservlet/src/main/java/net/yuchen/shiroservlet/ShiroServlet.java)
 
 The servlet response to two types of POST request:
 - POST in JSON format with an object: `"method":"authc"` along with login username and password. 
@@ -26,7 +26,22 @@ curl -l -H "Content-type: application/json" -X POST -d '{"method":"authz","usern
 ```
 
 ## Shiroweb
-This project provides a set of web page integrated with Shiro as security manager. The core is the custom realm realizing in:  `/shiroweb/src/main/java/net/yuchen/shiro/realm/ShiroRealm.java`: [ShiroRealm.java](/shiroweb/src/main/java/net/yuchen/shiro/realm/ShiroRealm.java), which mainly implement two following functions:
+This project provides a set of web page integrated with Shiro as security manager. The core is the custom realm realizing in:  `/shiroweb/src/main/java/net/yuchen/shiro/realm/`[ShiroRealm.java](/shiroweb/src/main/java/net/yuchen/shiro/realm/ShiroRealm.java), which mainly implement two following functions:
 
 - `doGetAuthenticationInfo` authenticate user by passing the token to shiroservlet.
-- `doGetAuthorizationInfo` authorize user by requesting shiroservlet with username.
+- `doGetAuthorizationInfo` authorize user by requesting shiroservlet roles and permissions information according to username.
+
+With roles and permissions given, the filtration of resources are controlled by Shiro config file:  `/shiroweb/src/main/resources/`[shiro-web.ini](/shiroweb/src/main/resources/shiro-web.ini)
+
+## Test
+After deploying the two web apps in tomcat, you can access the login page at:
+
+http://localhost:8080/shiroweb-1.0-SNAPSHOT/login
+
+you can login and test with three account:
+
+| Username  | Password | Roles | Permissions |
+| ------------- | ------------- | ------------- | ------------- |
+| lucas  | 123456  | admin,teacher  | user:\*, teacher:\*  |
+| alice  | 888888  | teacher  | student:\*  |
+| bob    | 666666  |          |            |
