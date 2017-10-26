@@ -41,7 +41,7 @@ http://localhost:8080/shiroweb-1.0-SNAPSHOT/login
 you can login and test with three account:
 
 | Username  | Password | Roles | Permissions |
-| ------------- | ------------- | ------------- | ------------- |
+| :----------: |:----------: |:----------: |:----------: |
 | lucas  | 123456  | admin,teacher  | user:\*, teacher:\*  |
 | alice  | 888888  | teacher  | student:\*  |
 | bob    | 666666  |          |            |
