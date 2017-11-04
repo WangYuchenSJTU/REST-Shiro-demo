@@ -45,3 +45,8 @@ you can login and test with three account:
 | lucas  | 123456  | admin,teacher  | user:\*, teacher:\*  |
 | alice  | 888888  | teacher  | student:\*  |
 | bob    | 666666  |          |            |
+
+## Shiro Classes
+![Classes](/images/ShiroClass.jpg)
+## Shiro Authentication & Authorization
+![AA](/images/ShiroAA.jpg)
