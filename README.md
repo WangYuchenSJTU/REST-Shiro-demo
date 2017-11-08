@@ -2,7 +2,7 @@
 A Shiro demo shows remote RESTful realms usage. 
 
 ## Overview
-This Shiro demo shows how to realize remote authentication and authorization through roles and permissions through RESTful API, it contains two web apps:
+This Shiro demo shows how to realize remote authentication and authorization through roles and permissions with RESTful API, it contains two web apps:
 - /shiroservlet provides security data access by responding HTTP POST request
 - /shiroweb consumes those security data through integrating Shiro and a custom realm 
 
